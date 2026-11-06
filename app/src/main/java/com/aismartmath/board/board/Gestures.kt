@@ -2,6 +2,7 @@ package com.aismartmath.board.board
 
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.pointer.PointerType
@@ -22,6 +23,7 @@ private enum class Mode { Draw, Free, UnitCircle, Rotate, Pan, Handle, Move, Res
  *  - hold for 0.8 s: paste / copy / cut / delete menu;
  *  - everything else drags the board.
  */
+@OptIn(ExperimentalComposeUiApi::class)
 fun Modifier.boardGestures(state: BoardState): Modifier = pointerInput(state) {
     awaitEachGesture {
         val cam = state.camera
